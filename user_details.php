@@ -26,7 +26,6 @@
         header("Location: panel.php");
     }
 
-    $retunred = details(15);
 
     function request_data($id , $unique){
         
