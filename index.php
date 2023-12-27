@@ -1,5 +1,3 @@
-
-
 <?php
     include 'user_details.php';
     include 'db_connection.php';
