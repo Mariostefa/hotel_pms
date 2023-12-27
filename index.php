@@ -4,8 +4,6 @@
     include 'user_details.php';
     include 'db_connection.php';
     
-    //this is a test
-    //test number 2
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
