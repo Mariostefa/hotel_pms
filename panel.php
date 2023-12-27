@@ -1,22 +1,34 @@
 <?php
     session_start();
     include 'db_connection.php';
-    include 'index.php';
+    
 
     if($_SESSION['logged_in']){
 
-        echo "Welcome " . $_SESSION['username']. "</br>"; 
-        echo "<a href='logout.php'> Log out  </a>";
+        echo "Welcome " . $_SESSION['user']. "</br>"; 
+
     
-        
+    
     
     
     }else{
         header("Location: index.php");
-        session_destroy();
+        die();
     }
     
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<a href='logout.php'> Log out  </a>
+</body>
+</html>
 
 
 

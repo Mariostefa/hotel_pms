@@ -1,5 +1,4 @@
 <?php
-    
     session_start();    
     include 'db_connection.php';
 
@@ -24,6 +23,7 @@
 
         //Redirects on panel.php
         header("Location: panel.php");
+        die();
     }
 
     function request_data($id , $unique){
