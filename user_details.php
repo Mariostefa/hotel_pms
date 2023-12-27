@@ -26,7 +26,6 @@
         header("Location: panel.php");
     }
 
-
     function request_data($id , $unique){
         
         global $conne;
@@ -43,7 +42,5 @@
         }
 
         return $row;
-
     }
-
 ?>
