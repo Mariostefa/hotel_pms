@@ -28,4 +28,13 @@ body {
   float: right;
   background-color: #04AA6D;
   color: white;
+  visibility: hidden;
+}
+
+.intro{
+
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+
 }
