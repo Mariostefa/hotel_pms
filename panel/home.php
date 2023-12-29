@@ -19,12 +19,12 @@
 <body style="background-color: #889bbf;">
 
 <div class="topnav">
-    <a href="home.php" <?php echo isActive('home') ?>>Αρχική</a>
-    <a href="pelates.php" <?php if (!shouldDisplayLink('pelates')) echo ' style="visibility: hidden;"' ;    echo isActive('pelates')  ?>> Πελάτες </a>
-    <a href="krathseis.php" <?php if (!shouldDisplayLink('krathseis')) echo ' style="visibility: hidden;"'; echo isActive('krathseis') ?>> Κρατήσεις </a>
-    <a href="upliloi.php" <?php if (!shouldDisplayLink('upliloi')) echo ' style="visibility: hidden;"' ;    echo isActive('upaliloi')?>> Υπάλληλοι </a>
-    <a href="dwmatia.php" <?php if (!shouldDisplayLink('dwmatia')) echo ' style="visibility: hidden;"' ;    echo isActive('dwmatia')?>> Δωμάτια </a>
-    <a href="uphresies.php" <?php if (!shouldDisplayLink('uphresies')) echo ' style="visibility: hidden;"'; echo isActive('uphresies')?>>Υπηρεσίες </a>
+    <a href="home.php" <?php echo isActive('home')  ?>>Αρχική</a>
+    <a href="pelates.php" <?php if (!shouldDisplayLink('pelates')) echo ' style="display: none;"' ;    echo isActive('pelates')  ?>> Πελάτες </a>
+    <a href="krathseis.php" <?php if (!shouldDisplayLink('krathseis')) echo ' style="display: none;"'; echo isActive('krathseis') ?>> Κρατήσεις </a>
+    <a href="upliloi.php" <?php if (!shouldDisplayLink('upliloi')) echo ' style="display: none;"' ;    echo isActive('upaliloi')?>> Υπάλληλοι </a>
+    <a href="dwmatia.php" <?php if (!shouldDisplayLink('dwmatia')) echo ' style="display: none;"' ;    echo isActive('dwmatia')?>> Δωμάτια </a>
+    <a href="uphresies.php" <?php if (!shouldDisplayLink('uphresies')) echo ' style="display: none;"'; echo isActive('uphresies')?>>Υπηρεσίες </a>
     <a href="../logout.php" class="split">Αποσύνδεση</a>
 </div>
 
