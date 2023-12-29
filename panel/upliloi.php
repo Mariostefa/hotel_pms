@@ -14,7 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Υπάλληλοι</title>
     <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/home.css">
 </head>
 <body style="background-color: #889bbf;">
 
@@ -30,6 +29,8 @@
 
 
 <div style="padding-left:16px; padding-right:16px">
+
+    <h1>Υπάλληλοι</h1>
 
 </div>
 
