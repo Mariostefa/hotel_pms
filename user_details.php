@@ -22,7 +22,7 @@
         $_SESSION['dikaiwma'] = $info_yp[9];
 
         //Redirects on panel.php
-        header("Location: panel.php");
+        header("Location: panel/home.php");
         die();
     }
 

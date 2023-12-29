@@ -18,7 +18,9 @@
             details($id);
 
         }else{
-            echo "wrong password or username";
+            echo '<script>';
+            echo 'alert("Wrong Username Or Password");';
+            echo '</script>';
         }
     }
 ?>

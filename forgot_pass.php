@@ -4,20 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="login.css">
+    <title>Password Reset</title>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <center> <h1> Login </h1> </center>   
-    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+    <center> <h1> Password Reset </h1> </center>   
+    <form >  
         <div class="container">   
             <label>Username : </label>   
-            <input type="text" placeholder="Enter Username" name="username" required>  
+            <input type="text" placeholder="Enter Username" name="user" required> 
+            <label>Email :</label>   <br>
+            <input type="email" placeholder="Enter Email" name="email" required> <br>
             <label>Password : </label>   
-            <input type="password" placeholder="Enter Password" name="password" required>  
-            <button type="submit" name="login">Login</button>   
-            <input type="checkbox" checked="checked"> Remember me    
-            Forgot <a href="#"> password? </a>   
+            <input type="password" placeholder="Enter Password" name="pass" required>  
+            <button class="login_button" name="reset" onclick="window.location.href='index.php'" >Reset Password</button>      
         </div>   
     </form>  
 
