@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Πελάτες</title>
     <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/pelates.css">
 </head>
 <body style="background-color: #889bbf;">
 
@@ -31,6 +32,47 @@
 <div style="padding-left:16px; padding-right:16px">
 
 <h1> Πελάτες</h1>
+
+
+<table border="0" cellspacing="3" cellpadding="4">
+  <tr>
+    <th>No</th>
+    <th>ΑΦΜ</th>
+    <th>ΟΝΟΜΑ</th>
+    <th>ΕΠΙΘΕΤΟ</th>
+    <th>ΦΥΛΟ</th>
+    <th>EMAIL</th>
+    <th>ΤΗΛΕΦΩΝΟ</th>
+    <th>ΗΜΕΡΟΜΗΝΙΑ ΓΕΝΝΗΣΗΣ</th>
+  </tr>
+
+<?php 
+    include '../db_connection.php';
+    
+    $query = "select * from pelaths";
+    $queryResult= mysqli_query($conne , $query);
+    $numrows=mysqli_num_rows($queryResult);
+    $num = 0;
+    while($row = mysqli_fetch_assoc($queryResult)) {
+        $num = $num + 1 ;
+    ?>
+    <tr>
+      <td><?php echo $num?></td>
+      <td><?php echo $row['afm']?></td>
+      <td><?php echo $row['onoma']?></td>
+      <td><?php echo $row['epitheto']?></td>
+      <td><?php echo $row['filo']?></td>
+      <td><?php echo $row['email']?></td>
+      <td><?php echo $row['thlefono']?></td>
+      <td><?php echo $row['hm_gennishs']?></td>
+    </tr>
+        <?php
+    }
+?>
+
+</table>
+
+
 
 </div>
 
