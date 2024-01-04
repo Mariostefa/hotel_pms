@@ -17,7 +17,7 @@
             <input type="email" placeholder="Enter Email" name="email" required> <br>
             <label>Password : </label>   
             <input type="password" placeholder="Enter Password" name="pass" required>  
-            <button class="login_button" name="reset" onclick="window.location.href='index.php'" >Reset Password</button>      
+            <button class="login_button" name="reset" onclick="window.location.href='login.php'" >Reset Password</button>      
         </div>   
     </form>  
 
