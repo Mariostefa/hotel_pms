@@ -1,3 +1,130 @@
 h1{
     color: whitesmoke;
+    text-align: center;
+}
+
+
+table{
+    border-radius: 3px;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: snow;
+    color:#133b8a;
+    border: 1px solid black;
+    border-collapse: collapse
+}
+
+
+th{
+    
+    background-color: snow;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+td{ 
+    font-size: 15px;
+}
+
+
+tr:nth-child(even) {
+    background-color: #9090973a;
+}
+
+
+
+.btnUpdate{
+    text-align: center;
+    background-color: lightblue;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 18px;
+    padding-left: 18px;
+    border-radius: 15px;
+   
+}
+
+.btnDelete{
+    text-align: center;
+    background-color: red;
+    margin-left: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 18px;
+    padding-left: 18px;
+    border-radius: 15px;
+
+}
+
+
+.btnDelete:hover,.btnUpdate:hover {
+    opacity: 0.7;
+}
+
+.btnDelete,.btnUpdate{
+    border: none;
+    color: whitesmoke;
+    font-size: 12px;
+
+}
+
+.dedwmena{
+
+    border-radius: 15px;
+    background-color: #667ba0 ;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-right: 10px;
+}
+
+
+.form {
+    margin-top: 10px;
+    margin-right: 35%;
+    margin-left: 35%;
+    border-radius: 15px;
+    background-color: #667ba0;
+    padding: 15px;
+}
+
+form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    text-align: center;
+    margin-bottom: 5px;
+    color: snow;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+select,
+input[type="date"] {
+    width: 90%; /* Adjust the width as per your preference */
+    margin: 8px 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.submit{
+    width: 90%; /* Adjust the width as per your preference */
+    margin: 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #45a049;
 }
