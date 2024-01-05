@@ -1,7 +1,7 @@
 <?php
     include 'user_details.php';
     include 'db_connection.php';
-    session_destroy();
+    
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
