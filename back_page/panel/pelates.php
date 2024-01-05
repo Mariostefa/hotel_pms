@@ -7,6 +7,78 @@
     }
 ?>
 
+
+
+<?php
+
+// Handle update request
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update-customer'])) {
+    $afm = mysqli_real_escape_string($conne, $_POST['update-afm']);
+    $fname = mysqli_real_escape_string($conne, $_POST['fname']);
+    $lname = mysqli_real_escape_string($conne, $_POST['lname']);
+    $email = mysqli_real_escape_string($conne, $_POST['email']);
+    $phone = mysqli_real_escape_string($conne, $_POST['phone']);
+    $sex = mysqli_real_escape_string($conne, $_POST['sex']);
+    $bdate = mysqli_real_escape_string($conne, $_POST['bdate']);
+
+    $updateQuery = "UPDATE pelaths SET onoma = '$fname', epitheto = '$lname', filo = '$sex', 
+                    email = '$email', thlefono = '$phone', hm_gennishs = '$bdate' 
+                    WHERE afm = '$afm'";
+
+    if (mysqli_query($conne, $updateQuery)) {
+        // Successful update
+        $updateMessage = "Επιτυχής ενημέρωση πελάτη.";
+    } else {
+        // Error in update
+        $updateMessage = "Σφάλμα κατά την ενημέρωση: " . mysqli_error($conne);
+    }
+}
+
+// Handle delete request
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete-customer'])) {
+    $deleteAfm = mysqli_real_escape_string($conne, $_POST['delete-afm']);
+
+    // Perform the deletion from the database
+    $deleteQuery = "DELETE FROM pelaths WHERE afm = '$deleteAfm'";
+    
+    if (mysqli_query($conne, $deleteQuery)) {
+        // Successful deletion
+        $deleteMessage = "Επιτυχής διαγραφή πελάτη.";
+    } else {
+        // Error in deletion
+        $deleteMessage = "Σφάλμα κατά τη διαγραφή: " . mysqli_error($conne);
+    }
+}
+
+// Handle form submission for new customer or update
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
+    $afm = mysqli_real_escape_string($conne, $_POST['afm']);
+    $fname = mysqli_real_escape_string($conne, $_POST['fname']);
+    $lname = mysqli_real_escape_string($conne, $_POST['lname']);
+    $email = mysqli_real_escape_string($conne, $_POST['email']);
+    $phone = mysqli_real_escape_string($conne, $_POST['phone']);
+    $sex = mysqli_real_escape_string($conne, $_POST['sex']);
+    $bdate = mysqli_real_escape_string($conne, $_POST['bdate']);
+
+    if (empty($updateData['afm'])) {
+        // It's an insert operation
+        $insertQuery = "INSERT INTO pelaths (afm, onoma, epitheto, filo, email,  thlefono, hm_gennishs) 
+                        VALUES ('$afm', '$fname', '$lname', '$sex' ,'$email', '$phone', '$bdate')";
+        
+        if (mysqli_query($conne, $insertQuery)) {
+            // Successful insertion
+            $insertMessage = "Επιτυχής καταχώρηση πελάτη.";
+        } else {
+            // Error in insertion
+            $insertMessage = "Σφάλμα κατά την καταχώρηση: " . mysqli_error($conne);
+        }
+    }
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,14 +101,37 @@
 </div>
 
 
-<div style="padding-left:16px; padding-right:16px">
+<div style="padding-left:10px; padding-right:10px">
 
 <h1> Πελάτες</h1>
 
 
-<table border="0" cellspacing="3" cellpadding="4">
+<?php
+        // Display messages if set
+        if (isset($deleteMessage)) {
+            echo '<p style="color: green;">' . $deleteMessage . '</p>';
+            header("Location: pelates.php"); // Redirect to the page showing the updated table
+            die();
+        }
+        if (isset($insertMessage)) {
+            echo '<p style="color: green;">' . $insertMessage . '</p>';
+            header("Location: pelates.php"); // Redirect to the page showing the updated table
+            die();
+        }
+        if (isset($updateMessage)) {
+            echo '<p style="color: green;">' . $updateMessage . '</p>';
+            header("Location: pelates.php"); // Redirect to the page showing the updated table
+            die();
+        }
+?>
+
+
+
+<div class="dedwmena">
+
+<table border="1" cellspacing="3" cellpadding="4">
   <tr>
-    <th style="text-align: center;">#</th>
+    <th>#</th>
     <th>ΑΦΜ</th>
     <th>ΟΝΟΜΑ</th>
     <th>ΕΠΙΘΕΤΟ</th>
@@ -57,8 +152,9 @@
     while($row = mysqli_fetch_assoc($queryResult)) {
         $num = $num + 1 ;
     ?>
-    <tr>
-      <td><?php echo $num?></td>
+    <tbody>
+    <tr  id='row-<?php echo $row['afm'] ?>'>
+      <td style="text-align: center;"><?php echo $num ?> </td>
       <td><?php echo $row['afm']?></td>
       <td><?php echo $row['onoma']?></td>
       <td><?php echo $row['epitheto']?></td>
@@ -66,63 +162,105 @@
       <td><?php echo $row['email']?></td>
       <td><?php echo $row['thlefono']?></td>
       <td><?php echo $row['hm_gennishs']?></td>
-      <td><button>Update</button>
-      <button>Delete</button>
-    </td>
+      <td>
+        <button class="btnUpdate" onclick="showUpdateForm(<?php echo $row['afm']; ?>)">Update</button>
+        <form method="post" style="display: inline-block;">
+            <input type="hidden" name="delete-afm" value="<?php echo $row['afm']; ?>">
+            <button type="submit" class="btnDelete" name="delete-customer">Delete</button>
+        </form>
+      </td>
     </tr>
+    </tbody>
+
         <?php
     }
 ?>
 </table>
+<br>
 
-<button> insert </button>
 
-<form action="customer_information.php" method="post" id="customer-form">
-        <h1>Φόρμα Κράτησης</h1>
-        <p>Παρακαλούμε συμπληρώστε με τις απαιτούμενες πληροφορίες την παρακάτω φόρμα</p>
+<script>
 
-        <div class="">
-            <label for="afm">Αρ. φορολογικού μητρώου: </label>
-            <input id="afm" name="afm" value="<?Php echo isset($_SESSION["afm"]) ? $_SESSION["afm"] : ""; ?>" type="text"
-                minlength="9" maxlength="9">
-            <label for="first-name">Όνομα: </label>
-            <input id="first-name" name="fname"
-                value="<?Php echo isset($_SESSION["first-name"]) ? $_SESSION["first-name"] : ""; ?>" type="text">(*)
-            <label for="last-name">Επώνυμο: </label>
-            <input id="last-name" name="lname"
-                value="<?Php echo isset($_SESSION["last-name"]) ? $_SESSION["last-name"] : ""; ?>" type="text">(*)
-            <label for="email">Email: </label>
-            <input id="email" name="email" value="<?Php echo isset($_SESSION["email"]) ? $_SESSION["email"] : ""; ?>"
-                type="email">
-            <label for="phone">Αρ. τηλεφώνου: </label>
-            <input id="phone" name="phone" value="<?Php echo isset($_SESSION["phone"]) ? $_SESSION["phone"] : ""; ?>"
-                type="tel" max="10">
-        </div>
+    function showButton(){
+        // Hide the "ΚΑΤΑΧΩΡΗΣΗ" button
+        document.getElementById('submit-btn').style.display = 'inline-block';
+
+        // Show the "UPDATE" button
+        document.getElementById('update-btn').style.display = 'none';
+    }
+
+    function showUpdateForm(id) {
+        // Get the data values for the clicked row
+        console.log(id);
+        let row = document.getElementById('row-' + id);
+        console.log(row);
+        let afm = row.cells[1].innerText;
+        let fname = row.cells[2].innerText;
+        let lname = row.cells[3].innerText;
+        let sex = row.cells[4].innerText;
+        let email = row.cells[5].innerText;
+        let phone = row.cells[6].innerText;
+        let bdate = row.cells[7].innerText;
+
+        // Set the value of the hidden input in the update form
+        document.getElementById('update-id').value = id;
+        document.getElementById('update-afm').value = afm;
+
+        // Hide the "ΚΑΤΑΧΩΡΗΣΗ" button
+        document.getElementById('submit-btn').style.display = 'none';
+        
+        // Show the "UPDATE" button
+        document.getElementById('update-btn').style.display = 'inline-block';
+
+        // Populate the input fields in the update form
+        document.getElementById('afm').value = afm;
+        document.getElementById('first-name').value = fname;
+        document.getElementById('last-name').value = lname;
+        document.getElementById('sex').value = sex;
+        document.getElementById('email').value = email;
+        document.getElementById('phone').value = phone;
+        document.getElementById('bdate').value = bdate;
+        event.preventDefault();
+    }
+</script>
+
+</div>
+
+<div class="form">
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="new-customer" style="text-align:center; padding-bottom:15px;" >
+        <h1>Στοιχεία Πελάτη</h1><br>
+
+        <input id="update-id" name="update-id" type="hidden" value="">
+        <input id="update-afm" name="update-afm" type="hidden" value="">
+
+        <label for="afm">Αρ. φορολογικού μητρώου: </label>
+            <input id="afm" name="afm" type="text" minlength="9" maxlength="9" value=""><br>
+        <label for="first-name">Όνομα: </label>
+            <input id="first-name" name="fname" type="text" value=""><br>
+        <label for="last-name">Επώνυμο: </label>
+            <input id="last-name" name="lname" type="text" value=""><br>
         <label for="sex">Φίλο: </label>
         <select id="sex" name="sex">
-            <option value="" <?php echo empty($_SESSION["sex"]) ? 'selected' : ''; ?> disabled>-</option>
-            <option value="male" <?php echo ($_SESSION["sex"] === 'male') ? 'selected' : ''; ?>>Ανδράς</option>
-            <option value="female" <?php echo ($_SESSION["sex"] === 'female') ? 'selected' : ''; ?>>Γυναίκα</option>
-            <option value="other" <?php echo ($_SESSION["sex"] === 'other') ? 'selected' : ''; ?>>Άλλο</option>
-        </select>(*)
-
+            <option value=""> - </option>
+            <option value="MALE">MALE</option>
+            <option value="FEMELE" >FEMELE</option>
+        </select><br>
+        <label for="email">Email: </label>
+            <input id="email" name="email" type="email" value=""><br>
+        <label for="phone">Αρ. τηλεφώνου: </label>
+            <input id="phone" name="phone" type="tel" max="10" value=""><br>
 
         <label for="bdate">Ημ. Γέννησης: </label>
-        <input id="bdate" name="bdate"
-            value="<?php echo isset($_SESSION["date-of-birth"]) ? $_SESSION["date-of-birth"] : ""; ?>" type="date">
+            <input id="bdate" name="bdate" type="date" value=""><br>
 
-
-        <label for="payment-method">Τρόπος πληρωμής: </label>
-        <select id="payment-method" name="payment" onchange="togglePaymentArea()">
-            <option value="" selected disabled>-</option>
-            <option value="CASH">Μετρητά</option>
-            <option value="CARD">Κάρτα</option>
-        </select>(*)
-
-        <button type="submit" name="send-customer-form">Αποστολή</button>
+        <button id="submit-btn" class="submit" type="submit" name="data-submit">ΚΑΤΑΧΩΡΗΣΗ</button>
+        <button id="update-btn" class="submit" type="submit" name="update-customer" style="display: none;">UPDATE</button>
     </form>  
+    
+</div>
 
 </div>
 
 </body>
 </html>
+
