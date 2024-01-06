@@ -17,6 +17,7 @@
 </head>
 <body style="background-color: #889bbf;">
 
+<!-- DONT TOUCH -->
 <div class="topnav">
     <a href="home.php" <?php echo isActive('home')  ?>>Αρχική</a>
     <a href="pelates.php" <?php if (!shouldDisplayLink('pelates')) echo ' style="display: none;"' ; echo isActive('pelates')  ?>> Πελάτες </a>
