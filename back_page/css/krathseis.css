@@ -106,7 +106,9 @@ input[type="password"],
 input[type="email"],
 input[type="tel"],
 select,
-input[type="date"] {
+input[type="date"],
+input[type="number"],
+input[type="datetime-local"] {
     width: 90%; /* Adjust the width as per your preference */
     margin: 8px 0;
     padding: 10px;
