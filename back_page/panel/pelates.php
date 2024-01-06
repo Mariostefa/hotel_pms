@@ -13,7 +13,9 @@
 
 // Handle update request
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update-customer'])) {
-    $afm = mysqli_real_escape_string($conne, $_POST['update-afm']);
+    $old_afm = mysqli_real_escape_string($conne, $_POST['update-afm']);
+    
+    $afm = mysqli_real_escape_string($conne, $_POST['afm']);
     $fname = mysqli_real_escape_string($conne, $_POST['fname']);
     $lname = mysqli_real_escape_string($conne, $_POST['lname']);
     $email = mysqli_real_escape_string($conne, $_POST['email']);
@@ -21,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update-customer'])) {
     $sex = mysqli_real_escape_string($conne, $_POST['sex']);
     $bdate = mysqli_real_escape_string($conne, $_POST['bdate']);
 
-    $updateQuery = "UPDATE pelaths SET onoma = '$fname', epitheto = '$lname', filo = '$sex', 
+    $updateQuery = "UPDATE pelaths SET afm = '$afm' ,onoma = '$fname', epitheto = '$lname', filo = '$sex', 
                     email = '$email', thlefono = '$phone', hm_gennishs = '$bdate' 
-                    WHERE afm = '$afm'";
+                    WHERE afm = '$old_afm'";
 
     if (mysqli_query($conne, $updateQuery)) {
         // Successful update
@@ -50,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete-customer'])) {
     }
 }
 
-// Handle form submission for new customer or update
+// Handle form submission for new customer 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
     $afm = mysqli_real_escape_string($conne, $_POST['afm']);
     $fname = mysqli_real_escape_string($conne, $_POST['fname']);
@@ -94,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
     <a href="home.php" <?php echo isActive('home')  ?>>Αρχική</a>
     <a href="pelates.php" <?php if (!shouldDisplayLink('pelates')) echo ' style="display: none;"' ; echo isActive('pelates')  ?>> Πελάτες </a>
     <a href="krathseis.php" <?php if (!shouldDisplayLink('krathseis')) echo ' style="display: none;"' ; echo isActive('krathseis') ?>> Κρατήσεις </a>
-    <a href="upliloi.php" <?php if (!shouldDisplayLink('upaliloi')) echo ' style="display: none;"' ; echo isActive('upaliloi')?>> Υπάλληλοι </a>
+    <a href="upaliloi.php" <?php if (!shouldDisplayLink('upaliloi')) echo ' style="display: none;"' ; echo isActive('upaliloi')?>> Υπάλληλοι </a>
     <a href="dwmatia.php" <?php if (!shouldDisplayLink('dwmatia')) echo ' style="display: none;"' ; echo isActive('dwmatia')?>> Δωμάτια </a>
     <a href="uphresies.php" <?php if (!shouldDisplayLink('uphresies')) echo ' style="display: none;"' ; echo isActive('uphresies')?>>Υπηρεσίες </a>
     <a href="../logout.php" class="split">Αποσύνδεση</a>
@@ -162,9 +164,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
       <td><?php echo $row['email']?></td>
       <td><?php echo $row['thlefono']?></td>
       <td><?php echo $row['hm_gennishs']?></td>
-      <td>
+      <td >
         <button class="btnUpdate" onclick="showUpdateForm(<?php echo $row['afm']; ?>)">Update</button>
-        <form method="post" style="display: inline-block;">
+        <form method="post" class="formdel" >
             <input type="hidden" name="delete-afm" value="<?php echo $row['afm']; ?>">
             <button type="submit" class="btnDelete" name="delete-customer">Delete</button>
         </form>
@@ -243,7 +245,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
         <select id="sex" name="sex">
             <option value=""> - </option>
             <option value="MALE">MALE</option>
-            <option value="FEMELE" >FEMELE</option>
+            <option value="FEMALE" >FEMALE</option>
+            <option value="OTHER" >OTHER</option>
         </select><br>
         <label for="email">Email: </label>
             <input id="email" name="email" type="email" value=""><br>
