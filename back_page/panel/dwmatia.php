@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Δωμάτια</title>
     <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/uphresies.css">
+    <link rel="stylesheet" href="../css/uphresies-dwmatia.css">
 
 </head>
 <body style="background-color: #889bbf;">
@@ -36,7 +36,7 @@
 <div>
             <div class="title-insert-btn">
                 <h1>Δωμάτια</h1>
-                <a class="insert-button" href="create-delete-update/insert_uphresia.php">ΕΙΣΑΓΩΓΗ</a>
+                <a class="insert-button" href="create-delete-update/insert_dwmatio.php">ΕΙΣΑΓΩΓΗ</a>
             </div>
 
 

@@ -40,7 +40,7 @@ if (isset($_POST["submit"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Υπηρεσίες</title>
     <link rel="stylesheet" href="../../css/navbar.css">
-    <link rel="stylesheet" href="../../css/uphresies.css">
+    <link rel="stylesheet" href="../../css/uphresies-dwmatia.css">
 </head>
 
 <body>
