@@ -5,6 +5,7 @@
         header("Location: ../login.php");
         die();
     }
+    include('../db_connection.php');
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Δωμάτια</title>
     <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/uphresies.css">
+
 </head>
 <body style="background-color: #889bbf;">
 
@@ -30,7 +33,60 @@
 
 <div style="padding-left:16px; padding-right:16px">
 
-<h1> Δωμάτια</h1>
+<div>
+            <div class="title-insert-btn">
+                <h1>Δωμάτια</h1>
+                <a class="insert-button" href="create-delete-update/insert_uphresia.php">ΕΙΣΑΓΩΓΗ</a>
+            </div>
+
+
+            <div class="border-outline">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>ΑΡΙΘΜΟΣ</th>
+                            <th>ΑΡΙΘΜΟΣ ΚΛΙΝΩΝ</th>
+                            <th>ΟΡΟΦΟΣ</th>
+                            <th>ΤΟΠΟΘΕΣΙΑ</th>
+                            <th>ΤΙΜΗ</th>
+                            <th>ΚΑΤΑΣΤΑΣΗ</th>
+                            <th>ΚΑΘΑΡΙΟΤΗΤΑ</th>
+                            <th>ΕΝΕΡΓΕΙΕΣ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $query = "SELECT * FROM dwmatio";
+                        $queryResult = mysqli_query($conne, $query);
+                        $numrows = mysqli_num_rows($queryResult);
+                        $num = 0;
+
+                        while ($row = mysqli_fetch_assoc($queryResult)) {
+                            $num = $num + 1;
+                            echo "<tr>";
+                            echo "<td>{$num}</td>";
+                            echo "<td>{$row['arithmos']}</td>";
+                            echo "<td>{$row['arithmos_klinwn']}</td>";
+                            echo "<td>{$row['orofos']}</td>";
+                            echo "<td>{$row['topothesia']}</td>";
+                            echo "<td>{$row['timi']}</td>";
+                            echo "<td>{$row['katastash']}</td>";
+                            echo "<td>{$row['kathariothta']}</td>";
+                            echo "<td>";
+                            echo " <div class='update-delete-btns'>";
+                            echo "<a href='create-delete-update/update_uphresia.php?updateid={$row['arithmos']}'>Επεξεργασία</a>";
+                            echo "<a href='create-delete-update/delete_uphresia.php?deleteid={$row['arithmos']}'>Διαγραφή</a>";
+                            echo "</div>";
+                            echo "</td>";
+                            echo "</tr>";
+
+                        }
+                        ?>
+                    <tbody>
+                </table>
+            </div>
+        </div>
 
 
 
