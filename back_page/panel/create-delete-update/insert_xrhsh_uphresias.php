@@ -80,11 +80,13 @@ if (isset($_POST["submit"])) {
             <input id="date-of-transaction" name="date-of-transaction" type="datetime-local" step="any">
             <label for="state-of-transaction">ΚΑΤΑΣΤΑΣΗ ΣΥΝΑΛΛΑΓΗΣ</label>
             <select id="state-of-transaction" name="state-of-transaction">
+                <option value="" selected disabled ></option>
                 <option value="ACCEPTED">ACCEPTED</option>
                 <option value="PENDING">PENDING</option>
             </select>
             <label for="payment-method">ΤΡΟΠΟΣ ΠΛΗΡΩΜΗΣ</label>
             <select id="payment-method" name="payment-method">
+                <option value="" selected disabled ></option>
                 <option value="CASH">CASH</option>
                 <option value="CARD">CARD</option>
             </select>
