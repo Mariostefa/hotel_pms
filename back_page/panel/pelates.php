@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
     <a href="home.php" <?php echo isActive('home')  ?>>Αρχική</a>
     <a href="pelates.php" <?php if (!shouldDisplayLink('pelates')) echo ' style="display: none;"' ; echo isActive('pelates')  ?>> Πελάτες </a>
     <a href="krathseis.php" <?php if (!shouldDisplayLink('krathseis')) echo ' style="display: none;"' ; echo isActive('krathseis') ?>> Κρατήσεις </a>
-    <a href="upliloi.php" <?php if (!shouldDisplayLink('upaliloi')) echo ' style="display: none;"' ; echo isActive('upaliloi')?>> Υπάλληλοι </a>
+    <a href="upaliloi.php" <?php if (!shouldDisplayLink('upaliloi')) echo ' style="display: none;"' ; echo isActive('upaliloi')?>> Υπάλληλοι </a>
     <a href="dwmatia.php" <?php if (!shouldDisplayLink('dwmatia')) echo ' style="display: none;"' ; echo isActive('dwmatia')?>> Δωμάτια </a>
     <a href="uphresies.php" <?php if (!shouldDisplayLink('uphresies')) echo ' style="display: none;"' ; echo isActive('uphresies')?>>Υπηρεσίες </a>
     <a href="../logout.php" class="split">Αποσύνδεση</a>
@@ -162,9 +162,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
       <td><?php echo $row['email']?></td>
       <td><?php echo $row['thlefono']?></td>
       <td><?php echo $row['hm_gennishs']?></td>
-      <td>
+      <td >
         <button class="btnUpdate" onclick="showUpdateForm(<?php echo $row['afm']; ?>)">Update</button>
-        <form method="post" style="display: inline-block;">
+        <form method="post" class="formdel" >
             <input type="hidden" name="delete-afm" value="<?php echo $row['afm']; ?>">
             <button type="submit" class="btnDelete" name="delete-customer">Delete</button>
         </form>
