@@ -76,8 +76,8 @@
                             echo "<td>{$row['kathariothta']}</td>";
                             echo "<td>";
                             echo " <div class='update-delete-btns'>";
-                            echo "<a href='create-delete-update/update_uphresia.php?updateid={$row['arithmos']}'>Επεξεργασία</a>";
-                            echo "<a href='create-delete-update/delete_uphresia.php?deleteid={$row['arithmos']}'>Διαγραφή</a>";
+                            echo "<a href='create-delete-update/update_dwmatio.php?updateid={$row['arithmos']}'>Επεξεργασία</a>";
+                            echo "<a href='create-delete-update/delete_dwmatio.php?deleteid={$row['arithmos']}'>Διαγραφή</a>";
                             echo "</div>";
                             echo "</td>";
                             echo "</tr>";

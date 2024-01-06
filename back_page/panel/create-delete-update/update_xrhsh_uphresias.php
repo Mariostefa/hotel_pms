@@ -8,6 +8,14 @@ if (!$_SESSION['logged_in']) {
 }
 include('../../db_connection.php');
 
+$afm_update = substr($_GET["updateid"],0,9);
+$service_update = substr($_GET["updateid"],10,4);
+$service_use_date_update = substr($_GET["updateid"],15);
+
+$query = "SELECT * FROM xrhsh_yphresias WHERE pelatis_fk='$afm_update' AND yphresia_fk='$service_update' AND hm_yphresias='$service_use_date_update'";
+$result = mysqli_query($conne, $query);
+$row = mysqli_fetch_assoc($result);
+
 if (isset($_POST["submit"])) {
 
     $afm = $_POST["afm"];
@@ -17,16 +25,13 @@ if (isset($_POST["submit"])) {
     $date_of_transaction = $_POST["date-of-transaction"];
     $state_of_transaction = $_POST["state-of-transaction"];
     $payment_method = $_POST["payment-method"];
-    
 
-
-
-    $query = "INSERT INTO xrhsh_yphresias VALUES ('$afm','$service_id','$service_use_date','$service_price','$date_of_transaction','$state_of_transaction','$payment_method')";
+    $query = "UPDATE xrhsh_yphresias SET pelatis_fk='$afm' ,yphresia_fk='$service_id' , hm_yphresias='$service_use_date' 
+            , poso='$service_price' , hmerominia_synallaghs='$date_of_transaction' , katastash_synallaghs='$state_of_transaction' 
+            , tropos_plhrwmhs='$payment_method' WHERE pelatis_fk= '$afm_update' AND yphresia_fk='$service_update ' AND hm_yphresias='$service_use_date_update'";
     $result = mysqli_query($conne, $query);
     if ($result) {
         header('location: ../uphresies.php');
-    } else {
-        echo "ERROR WRONG INPUTS!";
     }
 }
 
@@ -69,26 +74,42 @@ if (isset($_POST["submit"])) {
         <form method="post">
             <h1>Εισαγωγή νέας υπηρεσίας</h1>
             <label for="afm">ΑΦΜ</label>
-            <input id="afm" name="afm" type="text" minlength="9" maxlength="9">
+            <input id="afm" name="afm" type="text" minlength="9" maxlength="9" value="<?php echo $row["pelatis_fk"] ?>">
             <label for="service-id">ΚΩΔ. ΥΠΗΡΕΣΙΑΣ</label>
-            <input id="service-id" name="service-id" type="text">
+            <input id="service-id" name="service-id" type="text" value="<?php echo $row["yphresia_fk"] ?>">
             <label for="service-use-date">ΗΜ. ΧΡΗΣΗΣ ΥΠΗΡΕΣΙΑΣ</label>
-            <input id="service-use-date" name="service-use-date" type="datetime-local" step="any">
+            <input id="service-use-date" name="service-use-date" type="datetime-local" step="any" value="<?php echo $row["hm_yphresias"] ?>">
             <label for="price">ΠΟΣΟ</label>
-            <input id="price" name="price" type="number" step="0.01">
+            <input id="price" name="price" type="number" step="0.01" value="<?php echo $row["poso"] ?>">
             <label for="date-of-transaction">ΗΜ. ΣΥΝΑΛΛΑΓΗΣ</label>
-            <input id="date-of-transaction" name="date-of-transaction" type="datetime-local" step="any">
+            <input id="date-of-transaction" name="date-of-transaction" type="datetime-local" step="any" value="<?php echo $row["hmerominia_synallaghs"] ?>">
             <label for="state-of-transaction">ΚΑΤΑΣΤΑΣΗ ΣΥΝΑΛΛΑΓΗΣ</label>
             <select id="state-of-transaction" name="state-of-transaction">
-                <option value="ACCEPTED">ACCEPTED</option>
-                <option value="PENDING">PENDING</option>
+            <?php
+                $state_of_transaction_option = array(
+                    'ACCEPTED' => 'ACCEPTED',
+                    'PENDING' => 'PENDING',
+                );
+                foreach ($state_of_transaction_option as $value => $label) {
+                    $selected = ($value == $row["orofos"]) ? 'selected' : '';
+                    echo "<option value=\"$value\" $selected>$label</option>";
+                }
+                ?>
             </select>
             <label for="payment-method">ΤΡΟΠΟΣ ΠΛΗΡΩΜΗΣ</label>
             <select id="payment-method" name="payment-method">
-                <option value="CASH">CASH</option>
-                <option value="CARD">CARD</option>
+            <?php
+                $payment_method_option = array(
+                    'CASH' => 'CASH',
+                    'CARD' => 'CARD',
+                );
+                foreach ($payment_method_option as $value => $label) {
+                    $selected = ($value == $row["orofos"]) ? 'selected' : '';
+                    echo "<option value=\"$value\" $selected>$label</option>";
+                }
+                ?>
             </select>
-            <input type="submit" name="submit" value="Εισαγωγή">
+            <input type="submit" name="submit" value="Αλλαγή">
         </form>
     </div>
 

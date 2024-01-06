@@ -9,12 +9,11 @@ include('../../db_connection.php');
 
 if(isset($_GET["deleteid"])){
     $id = $_GET["deleteid"];
-    $query = "DELETE FROM  yphresia WHERE kwdikos='{$id}'";
+    $query = "DELETE FROM dwmatio WHERE arithmos='{$id}'";
     $result = mysqli_query($conne, $query);
     if($result){
-        header('location: ../uphresies.php');
+        header('location: ../dwmatia.php');
     }
-
 }
 
 

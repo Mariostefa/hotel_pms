@@ -112,6 +112,7 @@ include('../db_connection.php');
                             <th>ΗΜ. ΣΥΝΑΛΛΑΓΗΣ</th>
                             <th>ΚΑΤΑΣΤΑΣΗ ΣΥΝΑΛΛΑΓΗΣ</th>
                             <th>ΤΡΟΠΟΣ ΠΛΗΡΩΜΗΣ</th>
+                            <th>ΕΝΕΡΓΕΙΕΣ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -134,8 +135,8 @@ include('../db_connection.php');
                             echo "<td>{$row['tropos_plhrwmhs']}</td>";
                             echo "<td>";
                             echo " <div class='update-delete-btns'>";
-                            echo "<a href='create-delete-update/update_uphresia.php?updateid={$row['pelatis_fk']}+{$row['yphresia_fk']}+{$row['hm_yphresias']}'>Επεξεργασία</a>";
-                            echo "<a href='create-delete-update/delete_uphresia.php?deleteid={$row['pelatis_fk']}+{$row['yphresia_fk']}+{$row['hm_yphresias']}'>Διαγραφή</a>";
+                            echo "<a href='create-delete-update/update_xrhsh_uphresias.php?updateid={$row['pelatis_fk']}+{$row['yphresia_fk']}+{$row['hm_yphresias']}'>Επεξεργασία</a>";
+                            echo "<a href='create-delete-update/delete_xrhsh_uphresias.php?deleteid={$row['pelatis_fk']}+{$row['yphresia_fk']}+{$row['hm_yphresias']}'>Διαγραφή</a>";
                             echo "</div>";
                             echo "</td>";
                             echo "</tr>";

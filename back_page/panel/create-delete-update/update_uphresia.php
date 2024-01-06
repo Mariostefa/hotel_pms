@@ -77,7 +77,7 @@ if(isset($_POST["submit"])){
             <input id="service-price" name="service-price" type="number" step="0.01" value=<?php echo $row["timi"] ?>>
             <label for="service-availability">ΔΙΑΘΕΣΙΜΟΤΗΤΑ:</label>
             <input id="service-availability" name="service-availability" type="text" value=<?php echo $row["diathesimotita"] ?>>
-            <input type="submit" name="submit" value="Εισαγωγή">
+            <input type="submit" name="submit" value="Αλλαγή">
         </form>
     </div>
 

@@ -78,7 +78,6 @@ if(isset($_POST["submit"])){
             <select id="floor" name="floor">
             <option value="" selected disabled></option>
                 <option value="1">1</option>
-                <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
@@ -87,15 +86,15 @@ if(isset($_POST["submit"])){
             <select id="location" name="location">
                 <option value="" selected disabled ></option>
                 <option value="Thea Sth Thalassa">Θέα στη Θάλασσα</option>
-                <option value="Xwris mpalokoni">Χωρίς βεράντα</option>
+                <option value="Xwris veranda">Χωρίς βεράντα</option>
                 <option value="Me veranda">Με βεράντα</option>
                 <option value="Me mpalkoni">Με μπαλκόνι</option>
                 <option value="Xwris mpalokoni">Χωρις μπαλκόνι</option>
             </select>
             <label for="price">Τιμή</label>
-            <input type="number" id="price" name="price" step step="0.01">
+            <input type="number" id="price" name="price" step="0.01">
             <label for="state" name="state">Κατάσταση</label>
-            <select>
+            <select id="state" name="state">
                 <option value="" selected disabled></option>
                 <option value="AVAILABLE">Διαθέσιμο</option>
                 <option value="UNAVAILABLE">Μη Διαθέσιμο</option>
