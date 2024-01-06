@@ -50,7 +50,7 @@ if(isset($_POST["submit"])){
         <a href="../krathseis.php" <?php if (!shouldDisplayLink('krathseis'))
             echo ' style="display: none;"';
         echo isActive('krathseis') ?>> Κρατήσεις </a>
-        <a href="../upliloi.php" <?php if (!shouldDisplayLink('upaliloi'))
+        <a href="../upaliloi.php" <?php if (!shouldDisplayLink('upaliloi'))
             echo ' style="display: none;"';
         echo isActive('upaliloi') ?>> Υπάλληλοι </a>
         <a href="../dwmatia.php" <?php if (!shouldDisplayLink('dwmatia'))
