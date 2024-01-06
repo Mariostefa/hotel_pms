@@ -17,7 +17,6 @@
 </head>
 <body style="background-color: #889bbf;">
 
-<!-- DONT TOUCH ! -->
 <div class="topnav">
     <a href="home.php" <?php echo isActive('home')  ?>>Αρχική</a>
     <a href="pelates.php" <?php if (!shouldDisplayLink('pelates')) echo ' style="display: none;"' ; echo isActive('pelates')  ?>> Πελάτες </a>
@@ -33,7 +32,42 @@
 
 <h1> Δωμάτια</h1>
 
+<!--select-->
+<div id="center">
 
+<table border=2 align=center>
+<!--thead><-->
+	<tr>
+		<th width=80>ΑΡΙΘΜΟΣ</th>
+		<th width=80>ΑΡΙΘΜΟΣ ΚΛΙΝΩΝ</th>
+		<th width=80>ΟΡΟΦΟΣ</th>
+		<th width=80>ΤΟΠΟΘΕΣΙΑ</th>
+		<th width=80>ΤΙΜΗ</th>
+		<th width=80>ΚΑΤΑΣΤΑΣΗ</th>
+		<th width=80>ΚΑΘΑΡΙΟΤΗΤΑ</th>
+	</tr>
+<!--/thead><-->
+<!--tbody><-->
+<?php
+	// Σύνταξη Ερωτήματος για την εμφάνιση δεδομένων
+	$qry = "SELECT * FROM dwmatio";
+	
+	// Εκτέλεση Ερωτήματος
+	$result = mysqli_query($conne, $qry);
+	
+	// Παρουσίαση αποτελεσμάτων Ερωτήματος
+	while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+		
+        echo ("<tr><td><div align=\"center\"> $row[0]</div></td>
+				<td><div align=\"center\"> $row[1] </div></td></tr>");
+	}
+?>
+
+<!--/tbody><-->
+</table>
+
+<button onclick="location.href = 'index.php';"> Επιστροφή </button>
+</div>
 
 
 </div>
