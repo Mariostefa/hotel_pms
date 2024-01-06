@@ -91,38 +91,7 @@
 <!--select-->
 <div id="center">
 
-<table border=2 align=center>
-<!--thead><-->
-	<tr>
-		<th width=80>ΑΡΙΘΜΟΣ</th>
-		<th width=80>ΑΡΙΘΜΟΣ ΚΛΙΝΩΝ</th>
-		<th width=80>ΟΡΟΦΟΣ</th>
-		<th width=80>ΤΟΠΟΘΕΣΙΑ</th>
-		<th width=80>ΤΙΜΗ</th>
-		<th width=80>ΚΑΤΑΣΤΑΣΗ</th>
-		<th width=80>ΚΑΘΑΡΙΟΤΗΤΑ</th>
-	</tr>
-<!--/thead><-->
-<!--tbody><-->
-<?php
-	// Σύνταξη Ερωτήματος για την εμφάνιση δεδομένων
-	$qry = "SELECT * FROM dwmatio";
-	
-	// Εκτέλεση Ερωτήματος
-	$result = mysqli_query($conne, $qry);
-	
-	// Παρουσίαση αποτελεσμάτων Ερωτήματος
-	while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-		
-        echo ("<tr><td><div align=\"center\"> $row[0]</div></td>
-				<td><div align=\"center\"> $row[1] </div></td>
-				<td><div align=\"center\"> $row[2] </div></td>
-				<td><div align=\"center\"> $row[3] </div></td>
-				<td><div align=\"center\"> $row[4] </div></td>
-				<td><div align=\"center\"> $row[5] </div></td>
-				<td><div align=\"center\"> $row[6] </div></td></tr>");
-	}
-?>
+
 
 
 
