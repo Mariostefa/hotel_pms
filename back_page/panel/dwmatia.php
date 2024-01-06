@@ -59,15 +59,15 @@
 	while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
 		
         echo ("<tr><td><div align=\"center\"> $row[0]</div></td>
-				<td><div align=\"center\"> $row[1] </div></td></tr>");
+				<td><div align=\"center\"> $row[1] </div></td>
+				<td><div align=\"center\"> $row[2] </div></td>
+				<td><div align=\"center\"> $row[3] </div></td>
+				<td><div align=\"center\"> $row[4] </div></td>
+				<td><div align=\"center\"> $row[5] </div></td>
+				<td><div align=\"center\"> $row[6] </div></td></tr>");
 	}
 ?>
 
-<!--/tbody><-->
-</table>
-
-<button onclick="location.href = 'index.php';"> Επιστροφή </button>
-</div>
 
 
 </div>
