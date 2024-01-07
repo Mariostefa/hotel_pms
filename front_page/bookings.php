@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("user_session_variables.php");
 $_SESSION["bookings_date_picker_value"] = isset($_SESSION["date_picker_value"]) ? $_SESSION["date_picker_value"] : date('Y-m-d');
 $_SESSION["drop_down_value"] = isset($_SESSION["drop_down_value"]) ? $_SESSION["drop_down_value"] : "one";
 ?>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("timezone.php");
+include("user_session_variables.php");
 $_SESSION["services_date_picker_value"] = isset($_SESSION["services_date_picker_value"]) ? $_SESSION["services_date_picker_value"] : date('Y-m-d');
 $_SESSION["services_drop_down_value"] = isset($_SESSION["services_drop_down_value"]) ? $_SESSION["services_drop_down_value"] : "eight";
 ?>

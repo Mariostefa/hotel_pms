@@ -1,20 +1,10 @@
-<?php
-session_start();
-$_SESSION["afm"] = null;
-$_SESSION["first-name"] = null;
-$_SESSION["last-name"] = null;
-$_SESSION["email"] = null;
-$_SESSION["phone"] = null;
-$_SESSION["date-of-birth"] = null;
-$_SESSION["sex"] = null;
-?>
-
 <!DOCTYPE html>
 <html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Αρχική σελίδα</title>
+    
 </head>
 <body>
     <?php
