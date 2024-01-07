@@ -94,7 +94,6 @@ $_SESSION["services_drop_down_value"] = isset($_SESSION["services_drop_down_valu
             break;
     }
 
-    echo $date_and_time
         ?>
 
     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
@@ -133,7 +132,7 @@ $_SESSION["services_drop_down_value"] = isset($_SESSION["services_drop_down_valu
 
     <?php
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
+    // if($_SERVER["REQUEST_METHOD"] == "POST"){
     $query = "SELECT * FROM yphresia";
     $result = mysqli_query($conn, $query);
 
@@ -153,7 +152,7 @@ $_SESSION["services_drop_down_value"] = isset($_SESSION["services_drop_down_valu
 
 
     
-}
+// }
     include("customer_modal.php");
     include("footer.html");
     ?>
