@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Αρχική σελίδα</title>
-    
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
 </head>
 <body>
     <?php
