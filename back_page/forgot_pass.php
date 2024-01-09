@@ -17,6 +17,7 @@
             <input type="email" placeholder="Enter Email" name="email" required> <br>
             <label>Password : </label>   
             <input type="password" placeholder="Enter Password" name="pass" required>  
+            <!-- when you press the button redirects you on login.php-->
             <button class="login_button" name="reset" onclick="window.location.href='login.php'" >Reset Password</button>      
         </div>   
     </form>  

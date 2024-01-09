@@ -2,7 +2,7 @@
     session_start();
     include 'db_connection.php';
     
-    //gets the rights a user has from the database
+    //requests the rights a user has from the database
     function getRights(){
         global $conne;
 
@@ -10,7 +10,7 @@
         $query_login = "SELECT prosvasi FROM dikaiwmata WHERE kwdikos = '$right' ";
         $result = mysqli_query($conne , $query_login) ;
 
-
+        //inserts the data in a array list
         $row= mysqli_fetch_row($result);
         $acces = explode(',', $row[0]);
         return $acces;

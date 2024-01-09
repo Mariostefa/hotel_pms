@@ -1,4 +1,5 @@
 <?php
+    //database connectio
     $h = 'localhost'; // Όνομα server
     $u = 'root'; // Όνομα χρήστη
     $p = ''; // Password

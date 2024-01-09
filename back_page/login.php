@@ -2,7 +2,7 @@
     include 'user_details.php';
     include 'db_connection.php';
     
-
+    //Validates if the request is from a html form , otherwise it does note execute for safety reasons
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $pass = $_POST['password'];
@@ -11,8 +11,9 @@
         $query_login = "SELECT kwdikos FROM stoixia_sundeshs WHERE onoma = '$user' AND sinthimatiko = '$pass' ";
         $result = mysqli_query($conne , $query_login) ;
         $count = mysqli_num_rows($result);
+        //checks if the password and username exists
         if($count > 0){
-
+            //παίρνει το κλειδί απο το Login Πίνακα και βρίσκει το περνάει στο user_details.php , to get the users information
             $row= mysqli_fetch_row($result);
             $id = $row[0]; 
             details($id);

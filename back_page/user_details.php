@@ -2,7 +2,7 @@
     session_start();    
     include 'db_connection.php';
 
-
+    // sets the user status as logged in and request some information
     function details ($id){
         
         $_SESSION['logged_in'] = true;
@@ -26,6 +26,7 @@
         die();
     }
 
+    //retrives sthe afm of the user and the unique_code from table stoixia_sundeshs
     function request_data($id , $unique){
         
         global $conne;
