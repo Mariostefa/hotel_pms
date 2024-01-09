@@ -1,6 +1,6 @@
 <?php
     include '../accesses.php';
-
+    //security check
     if(!$_SESSION['logged_in']){
         header("Location: ../login.php");
         die();
@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
     <link rel="stylesheet" href="../css/pelates.css">
 </head>
 <body style="background-color: #889bbf;">
-
+<!-- Creates the Navigation Bar and checks if a user has access on some elements of the bar or not  -->
 <div class="topnav">
     <a href="home.php" <?php echo isActive('home')  ?>>Αρχική</a>
     <a href="pelates.php" <?php if (!shouldDisplayLink('pelates')) echo ' style="display: none;"' ; echo isActive('pelates')  ?>> Πελάτες </a>
@@ -111,17 +111,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
 <?php
         // Display messages if set
         if (isset($deleteMessage)) {
-            echo '<p style="color: green;">' . $deleteMessage . '</p>';
             header("Location: pelates.php"); // Redirect to the page showing the updated table
             die();
         }
         if (isset($insertMessage)) {
-            echo '<p style="color: green;">' . $insertMessage . '</p>';
             header("Location: pelates.php"); // Redirect to the page showing the updated table
             die();
         }
         if (isset($updateMessage)) {
-            echo '<p style="color: green;">' . $updateMessage . '</p>';
             header("Location: pelates.php"); // Redirect to the page showing the updated table
             die();
         }
@@ -130,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
 
 
 <div class="dedwmena">
-
+ <!-- table for pelates table -->
 <table border="1" cellspacing="3" cellpadding="4">
   <tr>
     <th>#</th>
@@ -143,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
     <th>ΗΜΕΡΟΜΗΝΙΑ ΓΕΝΝΗΣΗΣ</th>
     <th>Actions</th>
   </tr>
-
+<!-- request all data about each pelath and for every value pass it on the table on each row -->
 <?php 
     include '../db_connection.php';
 
@@ -164,9 +161,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
       <td><?php echo $row['email']?></td>
       <td><?php echo $row['thlefono']?></td>
       <td><?php echo $row['hm_gennishs']?></td>
-      <td >
+      <td > <!-- When you press update runs javascript below-->
         <button class="btnUpdate" onclick="showUpdateForm(<?php echo $row['afm']; ?>)">Update</button>
-        <form method="post" class="formdel" >
+        <form method="post" class="formdel" >  <!-- When you press delete automatically runs the code above , which handles the delete function-->
             <input type="hidden" name="delete-afm" value="<?php echo $row['afm']; ?>">
             <button type="submit" class="btnDelete" name="delete-customer">Delete</button>
         </form>
@@ -193,9 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
 
     function showUpdateForm(id) {
         // Get the data values for the clicked row
-        console.log(id);
         let row = document.getElementById('row-' + id);
-        console.log(row);
         let afm = row.cells[1].innerText;
         let fname = row.cells[2].innerText;
         let lname = row.cells[3].innerText;
@@ -255,7 +250,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data-submit'])) {
 
         <label for="bdate">Ημ. Γέννησης: </label>
             <input id="bdate" name="bdate" type="date" value=""><br>
-
+        <!-- it displayes each button under specific circumstances-->
         <button id="submit-btn" class="submit" type="submit" name="data-submit">ΚΑΤΑΧΩΡΗΣΗ</button>
         <button id="update-btn" class="submit" type="submit" name="update-customer" style="display: none;">UPDATE</button>
     </form>  

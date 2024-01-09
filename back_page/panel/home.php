@@ -1,6 +1,6 @@
 <?php
     include '../accesses.php';
-
+    // security check
     if(!$_SESSION['logged_in']){
         header("Location: ../login.php");
         die();
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../css/home.css">
 </head>
 <body style="background-color: #889bbf;">
-
+<!-- Creates the Navigation Bar and checks if a user has access on some elements of the bar or not  -->
 <div class="topnav">
     <a href="home.php" <?php echo isActive('home')  ?>>Αρχική</a>
     <a href="pelates.php" <?php if (!shouldDisplayLink('pelates')) echo ' style="display: none;"' ;    echo isActive('pelates')  ?>> Πελάτες </a>
@@ -28,7 +28,7 @@
     <a href="../logout.php" class="split">Αποσύνδεση</a>
 </div>
 
-
+<!-- displayes some information about the user -->
 <div style="padding-left:16px; padding-right:16px">
     <h2 class="intro"> <?php echo "Γεία σου " . $_SESSION['user'] ." ". $_SESSION['epitheto'] ?> </h2> <hr/>
     <h4> <?php echo "Αφμ : " . $_SESSION['afm'] ?></h4>
