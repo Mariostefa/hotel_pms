@@ -11,9 +11,19 @@
     </style>
 </head>
 <body>
-    <?php
-    include("front_page/header.html");
-    ?>
+<header>
+    <div class="topnav">
+    <h2><a href="index.php">DIPAE hotel</a></h2>
+    <nav>
+        <ul>
+            <li><a href="front_page/services.php">Υπηρεσίες</a></li>
+            <!-- <li><a href="excursions.php">Εκδρομές</a></li> -->
+            <li><a href="front_page/bookings.php">Κράτηση</a></li>
+            <li><a href="front_page/destroy_session_variables.php">Σύνδεση</a></li>
+        </ul>
+    </nav>
+    </div>
+</header>
     <main>
         <p>Καλώς ήρθατε στην κεντρική σελίδα του DIPAE HOTEL</p>
         <img src="front_page/images/Dipae_Hotel_Main_Image.jpg" alt="Dipae hotel main page image">
@@ -22,10 +32,10 @@
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" 
         <div>
     </main>
-<?php
-    include("front_page/footer.html");
-    ?>
-
+<footer>
+    <p>Uncopyrighted by Omada 4. Last built January 7th, 2024.</p>
+    <p>Hotel-dipae &copy;2023</p>
+</footer>
 
     
 </body>
